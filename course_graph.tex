@@ -1,0 +1,126 @@
+\documentclass[10pt]{article} 
+
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{float}
+
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\sset}{\subseteq}
+
+\pagenumbering{gobble}
+
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+    \tikzset{font=\scriptsize}
+    \tikzstyle{cs}=[rectangle,rounded corners,draw=Violet!50,fill=Violet!20,thick,inner xsep=0.1cm,inner ysep=0.5mm]
+    \tikzstyle{co}=[rectangle,rounded corners,draw=Red!50,fill=Red!20,thick,inner xsep=0.1cm,inner ysep=0.5mm]
+    \tikzstyle{pm}=[rectangle,rounded corners,draw=NavyBlue!50,fill=NavyBlue!20,thick,inner xsep=0.1cm,inner ysep=0.5mm]
+    \tikzstyle{term}=[rectangle,rounded corners,draw=black!50,thick,inner xsep=0.1cm,inner ysep=0.5mm]
+    \begin{tikzpicture}[node distance=2cm]
+        \node[term,alias=last,anchor=west] (1A) at (0, 0) {1A};
+        \foreach \title/\style in {MATH145/cs,MATH147/cs,CS145/cs,AFM131/cs,AFM101/cs} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (1B) at (0, -1.5) {1B};
+        \foreach \title/\style in {MATH146/cs,MATH148/cs,CS146/cs,STAT230/cs,AFM102/cs,PD1/cs} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (2A) at (0, -4.5) {2A};
+        \foreach \title/\style in {MATH245/cs,MATH249/cs,CS246E/cs,CS245/cs,CS251/cs} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (2B) at (0, -6) {2B};
+        \foreach \title/\style in {MATH247/cs,PMATH340/co,CS240E/cs,CS241/cs,STAT241/cs} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (3A) at (0, -9) {3A};
+        \foreach \title/\style in {PMATH347/co,CS341/cs,CO255/co,CO342/co,CO351/co} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+
+        \node[term,alias=last,anchor=west] (3B) at (0, -12) {3B};
+        \foreach \title/\style in {PMATH352/pm,CS350/cs,CS486/cs,CS762/cs,CO446/co} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (4A) at (0, -15) {4A};
+        \foreach \title/\style in {PMATH348/co,PMATH399/pm,CS444/cs,CS365/cs,PHYS234/cs} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (4B) at (0, -19.5) {4B};
+        \foreach \title/\style in {CS452/cs,CS343/cs,CS485/cs,CS462/cs,CO481/co} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \node[term,alias=last,anchor=west] (5A) at (0, -21) {5A};
+        \foreach \title/\style in {CS499/cs,CS466/cs,CS371/cs} {
+            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+        }
+
+        \begin{scope}[node distance=4cm]
+            \node[term,alias=last,anchor=west] (WT1) at (0, -3) {WT1};
+            \foreach \title/\style in {PHYS122/cs,PD11/cs} {
+                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+            }
+
+            \node[term,alias=last,anchor=west] (WT2) at (0, -7.5) {WT2};
+            \foreach \title/\style in {ENGL109/cs,PD10/cs} {
+                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+            }
+
+            \node[term,alias=last,anchor=west] (WT3) at (0, -10.5) {WT3};
+            \foreach \title/\style in {PHYS121/cs,PD?/cs} {
+                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+            }
+            
+            \node[term,alias=last,anchor=west] (WT4) at (0, -13.5) {WT4};
+            \foreach \title/\style in {CO456/co,PD?/cs} {
+                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+            }
+
+            \node[term,alias=last,anchor=west] (WT5) at (0, -16.5) {WT5};
+            \foreach \title/\style in {ENGL?/cs} {
+                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+            }
+
+            \node[term,alias=last,anchor=west] (WT6) at (0, -18) {WT6};
+            \foreach \title/\style in {} {
+                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
+            }
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
+
+\end{document}
