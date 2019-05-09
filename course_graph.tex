@@ -69,7 +69,7 @@
         \tikzstyle{cs co}=[basic,draw=ForestGreen!80,cs co fill]
         \tikzstyle{term}=[basic,thin]
 
-        \tikzstyle{prereq}=[<-,very thick]
+        \tikzstyle{prereq}=[<-,very thin]
 
         \begin{scope}[node distance=4cm]
             \node[term,alias=last,anchor=west] (WT1) at (0, -3) {WT1};
@@ -93,23 +93,23 @@
             }
 
             \node[term,alias=last,anchor=west] (WT5) at (0, -16.5) {WT5};
-            \foreach \title/\style in {ENGL?/cs} {
+            \foreach \title/\style in {PMATH351/co pm} {
                 \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
             }
 
             \node[term,alias=last,anchor=west] (WT6) at (0, -18) {WT6};
-            \foreach \title/\style in {} {
+            \foreach \title/\style in {ENGL?/cs} {
                 \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
             }
         \end{scope}
 
         \node[term,alias=last,anchor=west] (1A) at (0, 0) {1A};
-        \foreach \title/\style in {MATH145/cs,MATH147/cs,CS145/cs,AFM131/cs,AFM101/cs} {
+        \foreach \title/\style in {MATH145/cs co,MATH147/cs co,CS145/cs co,AFM131/cs,AFM101/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
         \node[term,alias=last,anchor=west] (1B) at (0, -1.5) {1B};
-        \foreach \title/\style in {MATH146/cs,MATH148/cs,CS146/cs,STAT230/cs,AFM102/cs,PD1/cs} {
+        \foreach \title/\style in {MATH146/cs co,MATH148/cs co,CS146/cs co,STAT230/cs co,AFM102/cs,PD1/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
@@ -121,7 +121,7 @@
         \draw[prereq] (AFM102) -- (AFM101);
 
         \node[term,alias=last,anchor=west] (2A) at (0, -4.5) {2A};
-        \foreach \title/\style in {MATH245/cs,MATH249/cs co,CS246E/cs,CS245/cs,CS251/cs} {
+        \foreach \title/\style in {MATH245/cs co,MATH249/cs co,CS246E/cs,CS245/cs,CS251/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
@@ -134,7 +134,7 @@
         \draw[prereq] (CS251) .. controls (STAT230.west) .. (CS146);
 
         \node[term,alias=last,anchor=west] (2B) at (0, -6) {2B};
-        \foreach \title/\style in {MATH247/cs pm,PMATH340/co pm,CS240E/cs,CS241/cs,STAT241/cs} {
+        \foreach \title/\style in {MATH247/cs pm,PMATH340/co pm,CS240E/cs,CS241/cs,STAT241/cs co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
@@ -152,10 +152,25 @@
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
+        \draw[prereq] (PMATH347) to [bend left=75] (MATH245);
+        \draw[prereq] (CS341) -- (CS240E);
+        \draw[prereq] (CS341) .. controls (CS240E.west) and (CS246E.west) .. (MATH249);
+        \draw[prereq] (CO255) -- (MATH245);
+        \draw[prereq] (CO255) .. controls (PMATH340.west) .. (MATH247);
+        \draw[prereq] (CO342) .. controls (PMATH340.east) .. (MATH249);
+
         \node[term,alias=last,anchor=west] (3B) at (0, -12) {3B};
-        \foreach \title/\style in {PMATH352/co pm,CS350/cs,CS486/cs co,CS762/cs,CO446/co} {
+        \foreach \title/\style in {PMATH352/co pm,CS350/cs,CS486/cs,CS762/cs,CO446/co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
+
+        \draw[prereq] (PMATH352) .. controls (PHYS121.west) and (ENGL109.west) .. (MATH247);
+        \draw[prereq] (CS350) -- (CS240E);
+        \draw[prereq] (CS350) .. controls (CO342.west) .. (CS241);
+        \draw[prereq] (CS350) -- (CS246E);
+        \draw[prereq] (CS350) -- (CS251);
+        \draw[prereq] (CS486) -- (CS341);
+        \draw[prereq] (CO446) -- (CO342);
 
         \node[term,alias=last,anchor=west] (4A) at (0, -15) {4A};
         \foreach \title/\style in {PMATH348/co pm,PMATH399/pm,CS444/cs,CS365/cs co,PHYS234/cs} {
@@ -163,7 +178,7 @@
         }
 
         \node[term,alias=last,anchor=west] (4B) at (0, -19.5) {4B};
-        \foreach \title/\style in {CS452/cs,CS343/cs,CS485/cs co,CS462/cs co,CO481/co} {
+        \foreach \title/\style in {CS452/cs,CS343/cs,CS485/cs,CS462/cs co,CO481/co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
