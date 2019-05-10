@@ -69,7 +69,7 @@
         \tikzstyle{cs co}=[basic,draw=ForestGreen!80,cs co fill]
         \tikzstyle{term}=[basic,thin]
 
-        \tikzstyle{prereq}=[<-,very thin]
+        \tikzstyle{prereq}=[<-,thin]
 
         \begin{scope}[node distance=4cm]
             \node[term,alias=last,anchor=west] (WT1) at (0, -3) {WT1};
@@ -93,7 +93,7 @@
             }
 
             \node[term,alias=last,anchor=west] (WT5) at (0, -16.5) {WT5};
-            \foreach \title/\style in {PMATH351/co pm} {
+            \foreach \title/\style in {PMATH352/co pm} {
                 \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
             }
 
@@ -148,11 +148,11 @@
         \draw[prereq] (STAT241) .. controls (CS241.north) and (CS246E.east) .. (MATH148);
 
         \node[term,alias=last,anchor=west] (3A) at (0, -9) {3A};
-        \foreach \title/\style in {PMATH347/co pm,CS341/cs,CO255/co,CO342/co,CO351/co} {
+        \foreach \title/\style in {PMATH351/co pm,CS341/cs,CO255/co,CO342/co,CO351/co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
-        \draw[prereq] (PMATH347) to [bend left=75] (MATH245);
+        \draw[prereq] (PMATH351) -- (MATH247);
         \draw[prereq] (CS341) -- (CS240E);
         \draw[prereq] (CS341) .. controls (CS240E.west) and (CS246E.west) .. (MATH249);
         \draw[prereq] (CO255) -- (MATH245);
@@ -160,22 +160,34 @@
         \draw[prereq] (CO342) .. controls (PMATH340.east) .. (MATH249);
 
         \node[term,alias=last,anchor=west] (3B) at (0, -12) {3B};
-        \foreach \title/\style in {PMATH352/co pm,CS350/cs,CS486/cs,CS762/cs,CO446/co} {
+        \foreach \title/\style in {PMATH347/co pm,CS350/cs,CS486/cs,CS762/cs,CO446/co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
-        \draw[prereq] (PMATH352) .. controls (PHYS121.west) and (ENGL109.west) .. (MATH247);
+        \draw[prereq] (PMATH347) .. controls (WT2.east) and (MATH247.west).. (MATH245);
         \draw[prereq] (CS350) -- (CS240E);
-        \draw[prereq] (CS350) .. controls (CO342.west) .. (CS241);
+        \draw[prereq] (CS350) .. controls (CO342.west) and (CO255.east).. (CS241);
         \draw[prereq] (CS350) -- (CS246E);
         \draw[prereq] (CS350) -- (CS251);
         \draw[prereq] (CS486) -- (CS341);
         \draw[prereq] (CO446) -- (CO342);
 
+        \draw[prereq] (CO456) .. controls (CS486.west) and (CS350.east) .. (CO255);
+
         \node[term,alias=last,anchor=west] (4A) at (0, -15) {4A};
-        \foreach \title/\style in {PMATH348/co pm,PMATH399/pm,CS444/cs,CS365/cs co,PHYS234/cs} {
+        \foreach \title/\style in {PMATH348/co pm,PMATH450/pm,CS444/cs,CS365/cs co,PHYS234/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
+
+        \draw[prereq] (PMATH348) -- (PMATH347);
+        \draw[prereq] (PMATH450) .. controls (CO456.west) and (PMATH348.east) .. (PMATH347);
+        \draw[prereq] (PMATH450) -- (PMATH351);
+        \draw[prereq] (CS444) -- (CS350);
+        \draw[prereq] (CS365) -- (CS240E);
+        \draw[prereq] (CS365) .. controls (CO342.east) and (CO351.west) .. (CS241);
+        \draw[prereq] (CS365) .. controls (CO255.west) and (PMATH340.east) .. (MATH249);
+
+        \draw[prereq] (PMATH352) .. controls (WT5.east) and (WT3.east) .. (MATH247);
 
         \node[term,alias=last,anchor=west] (4B) at (0, -19.5) {4B};
         \foreach \title/\style in {CS452/cs,CS343/cs,CS485/cs,CS462/cs co,CO481/co} {
