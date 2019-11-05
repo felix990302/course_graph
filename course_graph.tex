@@ -74,7 +74,7 @@
 
         \begin{scope}[node distance=12cm]
             \node[term,alias=last,anchor=west,label=left:S] (WT1) at (0, -6) {WT1};
-            \foreach \title/\style in {PD11/cs,PHYS122/cs} {
+            \foreach \title/\style in {PHYS122/cs,PD11/cs} {
                 \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
             }
 
@@ -84,7 +84,7 @@
             }
 
             \node[term,alias=last,anchor=west,label=left:W] (WT3) at (0, -21) {WT3};
-            \foreach \title/\style in {PHYS121/cs,PD?/cs} {
+            \foreach \title/\style in {CO481/co,PD?/cs} {
                 \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
             }
             
@@ -157,8 +157,10 @@
         \draw[prereq] (CO255) to [bend right=15] (MATH247);
         \draw[prereq] (CO342) -- (MATH249);
 
+        \draw[prereq] (CO481) -- (MATH245);
+
         \node[term,alias=last,anchor=west,label=left:S] (3B) at (0, -24) {3B};
-        \foreach \title/\style in {PMATH347/co pm,CS350/cs,PMATH352/co pm,CS370/cs,CS762/cs} {
+        \foreach \title/\style in {PMATH347/co pm,CS350/cs,PMATH352/co pm,CS762/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
@@ -168,14 +170,11 @@
         \draw[prereq] (CS350) -- (CS246E);
         \draw[prereq] (CS350) to [bend right=5] (CS251);
         \draw[prereq] (PMATH352) -- (MATH247);
-        \draw[prereq] (CS370) to [bend right=30] (CS246E);
-        \draw[prereq] (CS370) -- (MATH146);
-        \draw[prereq] (CS370) to [bend right=15] (MATH148);
 
         \draw[prereq] (CO456) to [bend left=45] (CO255);
 
         \node[term,alias=last,anchor=west,label=left:W] (4A) at (0, -30) {4A};
-        \foreach \title/\style in {PMATH348/co pm,CO487/cs co,CS444/cs,CS365/cs co,PHYS234/cs} {
+        \foreach \title/\style in {PMATH348/co pm,CO487/cs co,CS444/cs,CS365/cs co,PHYS121/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
@@ -186,12 +185,11 @@
         \draw[prereq] (CS365) -- (CS240E);
         \draw[prereq] (CS365) -- (CS241);
         \draw[prereq] (CS365) to [bend left=15] (MATH249);
-        \draw[prereq] (PHYS234) to [bend right=45] (PHYS122);
 
         \draw[prereq] (CO446) to [bend right=5] (CO342);
 
         \node[term,alias=last,anchor=west,label=left:W] (4B) at (0, -39) {4B};
-        \foreach \title/\style in {CO481/co,CS485/cs,CS452/cs,CS462/cs co} {
+        \foreach \title/\style in {CS499R/cs,CS485/cs,CS452/cs,CS462/cs co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
@@ -199,14 +197,19 @@
         \draw[prereq] (CS485) to [bend left=10] (CS341);
         \draw[prereq] (CS485) -- (STAT230);
         \draw[prereq] (CS462) -- (CS365);
-        \draw[prereq] (CO481) to [bend left=30] (MATH245);
 
         \node[term,alias=last,anchor=west,label=left:S] (4C) at (0, -42) {4C};
-        \foreach \title/\style in {CS466/cs,CS499T/cs} {
+        \foreach \title/\style in {PHYS234/cs,CS466/cs,CS499T/cs,CS370/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
         \draw[prereq] (CS466) to [bend right=15] (CS341);
+        \draw[prereq, dotted] (CS499T) -- (CS499R);
+        \draw[prereq] (CS370) to [bend right=30] (CS246E);
+        \draw[prereq] (CS370) -- (MATH146);
+        \draw[prereq] (CS370) to [bend right=5] (MATH148);
+
+        \draw[prereq] (PHYS234) -- (PHYS122);
 
         \begin{scope}[node distance=2cm]
             \node[alias=last,anchor=west] (Legend) at (0, -45) {Legend};
@@ -216,5 +219,6 @@
         \end{scope}
     \end{tikzpicture}
 \end{figure}
+
 
 \end{document}
