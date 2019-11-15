@@ -84,7 +84,7 @@
             }
 
             \node[term,alias=last,anchor=west,label=left:W] (WT3) at (0, -21) {WT3};
-            \foreach \title/\style in {CO481/co,PD?/cs} {
+            \foreach \title/\style in {PHYS121/co,PD?/cs} {
                 \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
             }
             
@@ -157,8 +157,6 @@
         \draw[prereq] (CO255) to [bend right=15] (MATH247);
         \draw[prereq] (CO342) -- (MATH249);
 
-        \draw[prereq] (CO481) -- (MATH245);
-
         \node[term,alias=last,anchor=west,label=left:S] (3B) at (0, -24) {3B};
         \foreach \title/\style in {PMATH347/co pm,CS350/cs,PMATH352/co pm,CS762/cs} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
@@ -174,13 +172,12 @@
         \draw[prereq] (CO456) to [bend left=45] (CO255);
 
         \node[term,alias=last,anchor=west,label=left:W] (4A) at (0, -30) {4A};
-        \foreach \title/\style in {PMATH348/co pm,CO487/cs co,CS444/cs,CS365/cs co,PHYS121/cs} {
+        \foreach \title/\style in {PMATH348/co pm,CO481/co,CS444/cs,CS365/cs co} {
             \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
         }
 
         \draw[prereq] (PMATH348) -- (PMATH347);
-        \draw[prereq] (CO487) -- (MATH145);
-        \draw[prereq] (CO487) -- (STAT230);
+        \draw[prereq] (CO481) -- (MATH245);
         \draw[prereq] (CS444) -- (CS350);
         \draw[prereq] (CS365) -- (CS240E);
         \draw[prereq] (CS365) -- (CS241);
