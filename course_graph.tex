@@ -1,6 +1,6 @@
-\documentclass[10pt]{article} 
+\documentclass[12pt]{article} 
 
-\usepackage[a2paper]{geometry}
+\usepackage[a3paper, landscape, margin=2in]{geometry}
 \usepackage{fullpage}
 \usepackage{bookmark}
 \usepackage{amsmath}
@@ -14,7 +14,13 @@
 \usepackage{tikz}
 \usepackage{float}
 
+\usetikzlibrary{positioning}
 \usetikzlibrary{shadows}
+\usetikzlibrary{graphs, graphs.standard}
+\usetikzlibrary{calc}
+\usetikzlibrary{graphdrawing}
+\usegdlibrary{layered}
+\usegdlibrary{force}
 
 % floor, ceiling, set
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -38,6 +44,34 @@
 
 \begin{document}
 
+
+\tikzstyle{basic}=[draw,rectangle,rounded corners,thick, minimum height=0.75cm, minimum width=2.25cm, inner xsep=0.25cm,inner ysep=1.5mm]
+\tikzstyle{term}=[basic, thin]
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node[term, xshift=3cm, yshift=-2.5cm] (F17) at (current page.north west) {Fall 17};
+    \node[term, below=of F17] (W18) {Winter 18};
+    \node[term, below=of W18] (S18) {Spring 18};
+    \node[term, below=of S18] (F18) {Fall 18};
+    \node[term, below=of F18] (W19) {Winter 19};
+    \node[term, below=of W19] (S19) {Spring 19};
+    \node[term, below=of S19] (F19) {Fall 19};
+    \node[term, below=of F19] (W20) {Winter 20};
+    \node[term, below=of W20] (S20) {Spring 20};
+    \node[term, below=of S20] (F20) {Fall 20};
+    \node[term, below=of F20] (W21) {Winter 21};
+    \node[term, below=of W21] (S21) {Spring 21};
+    \node[term, below=of S21] (F21) {Fall 21};
+    \node[term, below=of F21] (W22) {Winter 22};
+    \node[term, below=of W22] (S22) {Spring 22};
+
+    \graph[layered layout, use existing nodes] {
+        {[same layer] F17, 
+    };
+\end{tikzpicture}
+
+
+\iffalse
 \begin{figure}[H]
     \centering
     \tikzset{font=\textbf\footnotesize}
@@ -215,6 +249,6 @@
         \end{scope}
     \end{tikzpicture}
 \end{figure}
-
+\fi
 
 \end{document}
