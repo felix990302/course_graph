@@ -60,7 +60,7 @@
     -- (path picture bounding box.north east) |- cycle;
 }
 
-\tikzstyle{co pm fill}=[path picture={\HalfFill{CottonCandy!40}{Crimson!40}}]
+\tikzstyle{co pm fill}=[path picture={\HalfFill{Crimson!40}{CottonCandy!40}}]
 \tikzstyle{cs pm fill}=[path picture={\HalfFill{Violet!20}{CottonCandy!40}}]
 \tikzstyle{cs co fill}=[path picture={\HalfFill{Violet!20}{Crimson!40}}]
 
@@ -108,39 +108,39 @@
     \PutCourses{PD11/cs/below/of PD1, PHYS122/cs override/left/1cm of last}
 
     \node[term, below=of S18, alias=last] (F18) {Fall 18};
-    \PlaceCourses{CS245/cs/3cm, CS246E/cs/2cm, CS251/cs/2cm, MATH249/cs/6cm, MATH245/cs/2cm}
+    \PlaceCourses{CS245/cs/3cm, CS246E/cs/3cm, CS251/cs/3cm, MATH249/cs/3cm, MATH245/cs/3cm}
 
     \node[term, below=of F18, alias=last] (W19) {Winter 19};
-    \PlaceCourses{CS240E/cs/5cm, CS241/cs/3cm, PMATH340/co pm/3cm, MATH247/cs/2cm, STAT241/cs/6cm}
+    \PlaceCourses{CS240E/cs/6cm, CS241/cs/2cm, PMATH340/co pm/3cm, MATH247/cs pm/2cm, STAT241/cs/6cm}
 
     \node[term, below=of W19, alias=last] (S19) {Spring 19};
     \PutCourses{PD10/cs/below/4.5cm of PD11, ENGL109/cs/left/1cm of last}
 
     \node[term, below=of S19, alias=last] (F19) {Fall 19};
-    \PlaceCourses{CS341/cs/3cm, CO342/co/8cm, CO351/co override/1cm, CO255/co/1cm, PMATH351/pm/6cm}
+    \PlaceCourses{CS341/cs/3cm, CO351/co override/9cm, CO342/co/1cm, CO255/co/1cm, PMATH351/pm/3cm}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
     \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/1cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/5cm, CS350/cs/3cm, PMATH347/co pm/7cm, PMATH352/co pm/1cm}
+    \PlaceCourses{CS762/cs/7cm, CS350/cs/1cm, PMATH347/co pm/10.5cm, PMATH352/co pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
-    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/co/left/1cm of last}
+    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/co/left/7cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \DrawCourses[4 cm]{CS485/cs, CS365/cs, PMATH348/co pm, CO481/co}
+    \PlaceCourses{CS485/cs/5cm, CS365/cs/1cm, CO481/co/8cm, PMATH348/co pm/4cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
-    \DrawCourses[10 cm]{CO446/co, PD?/cs}
+    \PlaceCourses{CO446/co/16.5cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \DrawCourses[4 cm]{CS466/cs, CS370/cs, CO442/co, CO450/co}
+    \PlaceCourses{CS466/cs/3cm, CS370/cs/5cm, CO450/co/1cm, CO442/co/1cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \DrawCourses[5.85 cm]{CS499T/cs, CS451/cs, PHYS234/cs}
+    \PlaceCourses{CS451/cs/9cm, CS99T/cs/3cm, PHYS234/cs/5cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -154,8 +154,7 @@
             MATH245 <-[prereq] MATH146;
             MATH249 <-[prereq] {MATH145, MATH146};
 
-            CS240E <-[prereq] {CS245, CS246E};
-            CS240E <-[prereq, dashed] STAT230;
+            CS240E <-[prereq] {CS245, CS246E, STAT230};
             CS241 <-[prereq] CS246E;
             MATH247 <-[prereq] MATH148;
             PMATH340 <-[prereq] MATH145;
@@ -163,21 +162,22 @@
 
             CS341 <-[prereq] CS240E;
             CS341 <-[prereq, dashed] MATH249;
-            PMATH351 <-[prereq] MATH247;
+            PMATH351 <-[prereq, dashed] MATH247;
             CO255 <-[prereq] {MATH245, MATH247};
             CO342 <-[prereq] MATH249;
 
             CS762 <-[prereq] CS341;
             CS350 <-[prereq] {CS240E, CS246E, CS251, CS241};
             PMATH347 <-[prereq] MATH245;
-            PMATH352 <-[prereq] MATH247;
+            PMATH352 <-[prereq, dashed] MATH247;
 
             CO456 <-[prereq] CO255;
 
             CS485 <-[prereq] CS341;
             CS485 <-[prereq, dashed] STAT230;
-            CS365 <-[prereq] {CS240E, MATH249};
+            CS365 <-[prereq] CS240E;
             CS365 <-[prereq, dashed] CS241;
+            CS365 <-[prereq, dashed] MATH249;
             PMATH348 <-[prereq] PMATH347;
             CO481 <-[prereq] MATH245;
 
@@ -188,9 +188,8 @@
             CO442 <-[prereq] CO342;
             CO450 <-[prereq] CO351;
 
-            CS451 <-[prereq] CS350;
-            CS451 <-[prereq, dashed] CS341;
-            PHYS234 <-[prereq, dashed] PHYS122;
+            CS451 <-[prereq] {CS350, CS341};
+            PHYS234 <-[prereq] PHYS122;
         };
     \end{scope}
 \end{tikzpicture}
