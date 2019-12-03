@@ -82,39 +82,51 @@
     }
 }
 
+\newcommand\PlaceCourses[1] {
+    \foreach \title/\style/\dist in {#1} {
+        \node (\title) [\style, right=\dist of last, alias=last] {\title};
+    }
+}
+
+\newcommand\PutCourses[1] {
+    \foreach \title/\style/\place/\dist in {#1} {
+        \node (\title) [\style, \place=\dist, alias=last] {\title};
+    }
+}
+
 \begin{tikzpicture}[remember picture, overlay]
     \node[term, xshift=3.5cm, yshift=-1.75cm, alias=last] (AP) at (current page.north west) {AP Credits};
-    \DrawCourses[5.85 cm]{ECON102/cs, ENGL1XX/cs, FR1XX/cs}
+    \DrawCourses[6.5 cm]{ECON102/cs, ENGL1XX/cs, FR1XX/cs}
 
     \node[term, below=of AP, alias=last] (F17) {Fall 17};
-    \DrawCourses{CS145/cs, MATH145/cs, MATH147/cs, AFM131/cs, AFM101/cs}
+    \PlaceCourses{CS145/cs/3cm, MATH147/cs/6cm, MATH145/cs/2cm, AFM131/cs/6cm, AFM101/cs/2cm}
 
     \node[term, below=of F17, alias=last] (W18) {Winter 18};
-    \DrawCourses{CS146/cs, MATH148/cs, MATH146/cs, STAT230/cs, AFM102/cs, PD1/cs}
+    \DrawCourses{CS146/cs, STAT230/cs, MATH148/cs, MATH146/cs, AFM102/cs, PD1/cs}
 
     \node[term, below=of W18, alias=last] (S18) {Spring 18};
-    \DrawCourses[10 cm]{PHYS122/cs override, PD11/cs}
+    \PutCourses{PD11/cs/below/of PD1, PHYS122/cs override/left/1cm of last}
 
     \node[term, below=of S18, alias=last] (F18) {Fall 18};
-    \DrawCourses{CS246E/cs, CS251/cs, CS245/cs, MATH249/cs, MATH245/cs}
+    \PlaceCourses{CS245/cs/3cm, CS246E/cs/2cm, CS251/cs/2cm, MATH249/cs/6cm, MATH245/cs/2cm}
 
     \node[term, below=of F18, alias=last] (W19) {Winter 19};
-    \DrawCourses{CS240E/cs, CS241/cs, MATH247/cs, PMATH340/co pm, STAT241/cs}
+    \PlaceCourses{CS240E/cs/5cm, CS241/cs/3cm, PMATH340/co pm/3cm, MATH247/cs/2cm, STAT241/cs/6cm}
 
     \node[term, below=of W19, alias=last] (S19) {Spring 19};
-    \DrawCourses[10 cm]{ENGL109/cs, PD10/cs}
+    \PutCourses{PD10/cs/below/4.5cm of PD11, ENGL109/cs/left/1cm of last}
 
     \node[term, below=of S19, alias=last] (F19) {Fall 19};
-    \DrawCourses{CS341/cs, PMATH351/pm, CO255/co, CO351/co override, CO342/co}
+    \PlaceCourses{CS341/cs/3cm, CO342/co/8cm, CO351/co override/1cm, CO255/co/1cm, PMATH351/pm/6cm}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
-    \DrawCourses[10 cm]{PHYS121/cs, PD6/cs}
+    \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/1cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \DrawCourses[4 cm]{CS762/cs, CS350/cs, PMATH347/co pm, PMATH352/co pm}
+    \PlaceCourses{CS762/cs/5cm, CS350/cs/3cm, PMATH347/co pm/7cm, PMATH352/co pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
-    \DrawCourses[10 cm]{CO456/co, PD?/cs}
+    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/co/left/1cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
     \DrawCourses[4 cm]{CS485/cs, CS365/cs, PMATH348/co pm, CO481/co}
@@ -149,7 +161,8 @@
             PMATH340 <-[prereq] MATH145;
             STAT241 <-[prereq, dashed] STAT230;
 
-            CS341 <-[prereq, dashed] {CS240E, MATH249};
+            CS341 <-[prereq] CS240E;
+            CS341 <-[prereq, dashed] MATH249;
             PMATH351 <-[prereq] MATH247;
             CO255 <-[prereq] {MATH245, MATH247};
             CO342 <-[prereq] MATH249;
