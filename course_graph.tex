@@ -14,7 +14,9 @@
 \usepackage{tikz}
 \usepackage{float}
 
+\usetikzlibrary{arrows.meta}
 \usetikzlibrary{positioning}
+\usetikzlibrary{backgrounds}
 \usetikzlibrary{shadows}
 \usetikzlibrary{graphs, graphs.standard}
 \usetikzlibrary{calc}
@@ -41,214 +43,113 @@
 
 \pagenumbering{gobble}
 
+\definecolor{Crimson}{rgb}{0.86, 0.08, 0.24}
+\definecolor{CottonCandy}{rgb}{1.0, 0.74, 0.85}
+
 
 \begin{document}
 
 
-\tikzstyle{basic}=[draw,rectangle,rounded corners,thick, minimum height=0.75cm, minimum width=2.25cm, inner xsep=0.25cm,inner ysep=1.5mm]
+\tikzstyle{basic}=[draw,rectangle,rounded corners,thick, minimum height=0.75cm, minimum width=2.75cm, inner xsep=0.15cm,inner ysep=1.25mm]
 \tikzstyle{term}=[basic, thin]
 
-\begin{tikzpicture}[remember picture, overlay]
-    \node[term, xshift=3cm, yshift=-2.5cm] (F17) at (current page.north west) {Fall 17};
-    \node[term, below=of F17] (W18) {Winter 18};
-    \node[term, below=of W18] (S18) {Spring 18};
-    \node[term, below=of S18] (F18) {Fall 18};
-    \node[term, below=of F18] (W19) {Winter 19};
-    \node[term, below=of W19] (S19) {Spring 19};
-    \node[term, below=of S19] (F19) {Fall 19};
-    \node[term, below=of F19] (W20) {Winter 20};
-    \node[term, below=of W20] (S20) {Spring 20};
-    \node[term, below=of S20] (F20) {Fall 20};
-    \node[term, below=of F20] (W21) {Winter 21};
-    \node[term, below=of W21] (S21) {Spring 21};
-    \node[term, below=of S21] (F21) {Fall 21};
-    \node[term, below=of F21] (W22) {Winter 22};
-    \node[term, below=of W22] (S22) {Spring 22};
+\newcommand\HalfFill[2] {
+    \fill[#1] (path picture bounding box.south west)
+    -- (path picture bounding box.north east) -| cycle;
+    \fill[#2] (path picture bounding box.south west)
+    -- (path picture bounding box.north east) |- cycle;
+}
 
-    \graph[layered layout, use existing nodes] {
-        {[same layer] F17, 
-    };
+\tikzstyle{co pm fill}=[path picture={\HalfFill{CottonCandy!40}{Crimson!40}}]
+\tikzstyle{cs pm fill}=[path picture={\HalfFill{Violet!20}{CottonCandy!40}}]
+\tikzstyle{cs co fill}=[path picture={\HalfFill{Violet!20}{Crimson!40}}]
+
+\tikzstyle{cs}=[basic,draw=Violet!80,fill=Violet!20]
+\tikzstyle{co}=[basic,draw=Crimson!80,fill=Crimson!40]
+\tikzstyle{pm}=[basic,draw=CottonCandy,fill=CottonCandy!40]
+\tikzstyle{co pm}=[basic,draw=Crimson!80,co pm fill]
+\tikzstyle{cs pm}=[basic,draw=Violet!80,cs pm fill]
+\tikzstyle{cs co}=[basic,draw=Violet!80,cs co fill]
+
+\tikzstyle{cs override}=[cs, very thick, loosely dashed]
+\tikzstyle{co override}=[co, very thick, loosely dashed]
+
+\tikzstyle{prereq}=[{Stealth[length=4.5mm]}-, very thick]
+
+\newcommand\DrawCourses[2][3 cm] {
+    \foreach \title/\style in {#2} {
+        \node (\title) [\style, right=#1 of last, alias=last] {\title};
+    }
+}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node[term, xshift=3.5cm, yshift=-1.75cm, alias=last] (AP) at (current page.north west) {AP Credits};
+    \DrawCourses[5.85 cm]{ECON102/cs, ENGL1XX/cs, FR1XX/cs}
+
+    \node[term, below=of AP, alias=last] (F17) {Fall 17};
+    \DrawCourses{CS145/cs, MATH145/cs, MATH147/cs, AFM131/cs, AFM101/cs}
+
+    \node[term, below=of F17, alias=last] (W18) {Winter 18};
+    \DrawCourses{CS146/cs, MATH148/cs, MATH146/cs, STAT230/cs, AFM102/cs, PD1/cs}
+
+    \node[term, below=of W18, alias=last] (S18) {Spring 18};
+    \DrawCourses[10 cm]{PHYS122/cs override, PD11/cs}
+
+    \node[term, below=of S18, alias=last] (F18) {Fall 18};
+    \DrawCourses{CS246E/cs, CS251/cs, CS245/cs, MATH245/cs, MATH249/cs}
+
+    \node[term, below=of F18, alias=last] (W19) {Winter 19};
+    \DrawCourses{CS240E/cs, CS241/cs, MATH247/cs, PMATH340/co pm, STAT241/cs}
+
+    \node[term, below=of W19, alias=last] (S19) {Spring 19};
+    \DrawCourses[10 cm]{ENGL109/cs, PD10/cs}
+
+    \node[term, below=of S19, alias=last] (F19) {Fall 19};
+    \DrawCourses{CS341/cs, PMATH351/pm, CO255/co, CO342/co, CO351/co override}
+
+    \node[term, below=of F19, alias=last] (W20) {Winter 20};
+    \DrawCourses[10 cm]{PHYS121/cs, PD6/cs}
+
+    \node[term, below=of W20, alias=last] (S20) {Spring 20};
+    \DrawCourses[4 cm]{CS762/cs, CS350/cs, PMATH347/co pm, PMATH352/co pm}
+
+    \node[term, below=of S20, alias=last] (F20) {Fall 20};
+    \DrawCourses[10 cm]{CO456/co, PD?/cs}
+
+    \node[term, below=of F20, alias=last] (W21) {Winter 21};
+    \DrawCourses[4 cm]{CS485/cs, CS365/cs, PMATH348/co pm, CO481/co}
+
+    \node[term, below=of W21, alias=last] (S21) {Spring 21};
+    \DrawCourses[10 cm]{CO446/co, PD?/cs}
+
+    \node[term, below=of S21, alias=last] (F21) {Fall 21};
+    \DrawCourses[4 cm]{CS466/cs, CS370/cs, CO442/co, CO450/co}
+
+    \node[term, below=of F21, alias=last] (W22) {Winter 22};
+
+    \node[term, below=of W22, alias=last] (S22) {Spring 22};
+    \DrawCourses[5.85 cm]{CS499T/cs, CS451/cs, PHYS234/cs}
+
+    \begin{scope}[on background layer]
+        \graph[use existing nodes, simple] {
+            CS146 <-[prereq] CS145;
+            MATH146 <-[prereq] MATH145;
+            MATH148 <-[prereq] MATH147;
+            AFM102 <-[prereq] AFM101;
+
+            CS246E <-[prereq] CS146;
+            CS245 <-[prereq] {MATH145, CS146};
+            MATH245 <-[prereq] MATH146;
+            MATH249 <-[prereq] {MATH145, MATH146};
+
+            CS240E <-[prereq] {CS245, CS246E, STAT230};
+            CS241 <-[prereq] CS246E;
+            MATH247 <-[prereq] MATH148;
+            PMATH340 <-[prereq] MATH145;
+            STAT241 <-[prereq] STAT230;
+        };
+    \end{scope}
 \end{tikzpicture}
 
-
-\iffalse
-\begin{figure}[H]
-    \centering
-    \tikzset{font=\textbf\footnotesize}
-    \begin{tikzpicture}[node distance=6cm]
-        \tikzstyle{co pm fill}=[path picture={
-            \fill[Red!20] (path picture bounding box.south west)
-        -- (path picture bounding box.north east) -| cycle;
-            \fill[NavyBlue!40] (path picture bounding box.south west)
-        -- (path picture bounding box.north east) |- cycle;
-        }]
-        \tikzstyle{cs pm fill}=[path picture={
-            \fill[ForestGreen!20] (path picture bounding box.south west)
-        -- (path picture bounding box.north east) -| cycle;
-            \fill[NavyBlue!40] (path picture bounding box.south west)
-        -- (path picture bounding box.north east) |- cycle;
-        }]
-        \tikzstyle{cs co fill}=[path picture={
-            \fill[ForestGreen!20] (path picture bounding box.south west)
-        -- (path picture bounding box.north east) -| cycle;
-            \fill[Red!20] (path picture bounding box.south west)
-        -- (path picture bounding box.north east) |- cycle;
-        }]
-
-        \tikzstyle{basic}=[draw,rectangle,rounded corners,thick,inner xsep=0.1cm,inner ysep=0.5mm]
-        \tikzstyle{cs}=[basic,draw=ForestGreen!80,fill=ForestGreen!20]
-        \tikzstyle{co}=[basic,draw=Red!80,fill=Red!20]
-        \tikzstyle{pm}=[basic,draw=NavyBlue!80,fill=NavyBlue!40]
-        \tikzstyle{co pm}=[basic,draw=Red!80,co pm fill]
-        \tikzstyle{cs pm}=[basic,draw=ForestGreen!80,cs pm fill]
-        \tikzstyle{cs co}=[basic,draw=ForestGreen!80,cs co fill]
-        \tikzstyle{term}=[basic,thin]
-
-        \tikzstyle{prereq}=[<<-,thin]
-
-        \begin{scope}[node distance=12cm]
-            \node[term,alias=last,anchor=west,label=left:S] (WT1) at (0, -6) {WT1};
-            \foreach \title/\style in {PHYS122/cs,PD11/cs} {
-                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-            }
-
-            \node[term,alias=last,anchor=west,label=left:S] (WT2) at (0, -15) {WT2};
-            \foreach \title/\style in {ENGL109/cs,PD10/cs} {
-                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-            }
-
-            \node[term,alias=last,anchor=west,label=left:W] (WT3) at (0, -21) {WT3};
-            \foreach \title/\style in {PHYS121/co,PD?/cs} {
-                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-            }
-            
-            \node[term,alias=last,anchor=west,label=left:F] (WT4) at (0, -27) {WT4};
-            \foreach \title/\style in {CO456/co,PD?/cs} {
-                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-            }
-
-            \node[term,alias=last,anchor=west,label=left:S] (WT5) at (0, -33) {WT5};
-            \foreach \title/\style in {CO446/co} {
-                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-            }
-
-            \node[term,alias=last,anchor=west,label=left:W] (WT6) at (0, -39) {WT6};
-        \end{scope}
-
-        \node[term,alias=last,anchor=west,label=left:F] (1A) at (0, 0) {1A};
-        \foreach \title/\style in {MATH145/cs co,MATH147/cs co,CS145/cs co,AFM131/cs,AFM101/cs} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \node[term,alias=last,anchor=west,label=left:W] (1B) at (0, -3) {1B};
-        \foreach \title/\style in {MATH146/cs co,MATH148/cs co,CS146/cs co,AFM102/cs,STAT230/cs co,PD1/cs} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (MATH146) -- (MATH145);
-        \draw[prereq] (MATH148) -- (MATH147);
-        \draw[prereq] (CS146) -- (CS145);
-        \draw[prereq] (STAT230) -- (MATH145);
-        \draw[prereq] (STAT230) -- (MATH147);
-        \draw[prereq] (AFM102) -- (AFM101);
-
-        \node[term,alias=last,anchor=west,label=left:F] (2A) at (0, -9) {2A};
-        \foreach \title/\style in {MATH245/cs co,MATH249/cs co,CS245/cs,CS246E/cs,CS251/cs} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (MATH245) -- (MATH146);
-        \draw[prereq] (MATH249) -- (MATH145);
-        \draw[prereq] (MATH249) -- (MATH146);
-        \draw[prereq] (CS246E) -- (CS146);
-        \draw[prereq] (CS245) -- (CS146);
-        \draw[prereq] (CS245) -- (MATH145);
-        \draw[prereq] (CS251) -- (CS146);
-
-        \node[term,alias=last,anchor=west,label=left:W] (2B) at (0, -12) {2B};
-        \foreach \title/\style in {PMATH340/co pm,MATH247/cs pm,CS240E/cs,STAT241/cs co,CS241/cs} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (MATH247) to [bend right=30] (MATH148);
-        \draw[prereq] (PMATH340) to [bend left=30] (MATH145);
-        \draw[prereq] (CS240E) -- (CS245);
-        \draw[prereq] (CS240E) -- (CS246E);
-        \draw[prereq] (CS240E) -- (STAT230);
-        \draw[prereq] (CS241) -- (CS246E);
-        \draw[prereq] (STAT241) -- (STAT230);
-        \draw[prereq] (STAT241) -- (MATH148);
-
-        \node[term,alias=last,anchor=west,label=left:F] (3A) at (0, -18) {3A};
-        \foreach \title/\style in {PMATH351/co pm,CO255/co,CS341/cs,CO342/co,CO351/co} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (PMATH351) -- (MATH247);
-        \draw[prereq] (CS341) -- (CS240E);
-        \draw[prereq] (CS341) -- (MATH249);
-        \draw[prereq] (CO255) -- (MATH245);
-        \draw[prereq] (CO255) to [bend right=15] (MATH247);
-        \draw[prereq] (CO342) -- (MATH249);
-
-        \node[term,alias=last,anchor=west,label=left:S] (3B) at (0, -24) {3B};
-        \foreach \title/\style in {PMATH347/co pm,CS350/cs,PMATH352/co pm,CS762/cs} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (PMATH347) to [bend left=30] (MATH245);
-        \draw[prereq] (CS350) -- (CS240E);
-        \draw[prereq] (CS350) -- (CS241);
-        \draw[prereq] (CS350) -- (CS246E);
-        \draw[prereq] (CS350) to [bend right=5] (CS251);
-        \draw[prereq] (PMATH352) -- (MATH247);
-
-        \draw[prereq] (CO456) to [bend left=45] (CO255);
-
-        \node[term,alias=last,anchor=west,label=left:W] (4A) at (0, -30) {4A};
-        \foreach \title/\style in {PMATH348/co pm,CO481/co,CS485/cs,CS365/cs co} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (PMATH348) -- (PMATH347);
-        \draw[prereq] (CO481) -- (MATH245);
-        \draw[prereq] (CS485) -- (STAT230);
-        \draw[prereq] (CS485) to [bend left=10] (CS341);
-        \draw[prereq] (CS365) -- (CS240E);
-        \draw[prereq] (CS365) -- (CS241);
-        \draw[prereq] (CS365) -- (MATH249);
-
-        \draw[prereq] (CO446) to [bend right=5] (CO342);
-
-        \node[term,alias=last,anchor=west,label=left:F] (4B) at (0, -36) {4B};
-        \foreach \title/\style in {CS499R/cs,CS466/cs,CS370/cs,CO450/co} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq] (CS466) -- (CS341);
-        \draw[prereq] (CO450) -- (CO351);
-        \draw[prereq] (CS370) -- (CS246E);
-        \draw[prereq] (CS370) -- (MATH146);
-        \draw[prereq] (CS370) -- (MATH148);
-
-        \node[term,alias=last,anchor=west,label=left:S] (4C) at (0, -42) {4C};
-        \foreach \title/\style in {PHYS234/cs,CS499T/cs,CS451/cs} {
-            \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-        }
-
-        \draw[prereq, dotted] (CS499T) -- (CS499R);
-        \draw[prereq] (PHYS234) -- (PHYS122);
-        \draw[prereq] (CS451) -- (CS350);
-        \draw[prereq] (CS451) to [bend left=15] (CS341);
-
-        \begin{scope}[node distance=2cm]
-            \node[alias=last,anchor=west] (Legend) at (0, -45) {Legend};
-            \foreach \title/\style in {CS/cs,CO/co,PMATH/pm,CO+PMATH/co pm,CS+PMATH/cs pm,CS+CO/cs co} {
-                \node (\title) [\style,right of=last,alias=last,anchor=west] {\title};
-            }
-        \end{scope}
-    \end{tikzpicture}
-\end{figure}
-\fi
 
 \end{document}
