@@ -74,7 +74,7 @@
 \tikzstyle{cs override}=[cs, very thick, loosely dashed]
 \tikzstyle{co override}=[co, very thick, loosely dashed]
 
-\tikzstyle{prereq}=[{Stealth[length=4.5mm]}-, very thick]
+\tikzstyle{prereq}=[{Stealth[length=4.5mm]}-, thick]
 
 \newcommand\DrawCourses[2][3 cm] {
     \foreach \title/\style in {#2} {
@@ -96,7 +96,7 @@
     \DrawCourses[10 cm]{PHYS122/cs override, PD11/cs}
 
     \node[term, below=of S18, alias=last] (F18) {Fall 18};
-    \DrawCourses{CS246E/cs, CS251/cs, CS245/cs, MATH245/cs, MATH249/cs}
+    \DrawCourses{CS246E/cs, CS251/cs, CS245/cs, MATH249/cs, MATH245/cs}
 
     \node[term, below=of F18, alias=last] (W19) {Winter 19};
     \DrawCourses{CS240E/cs, CS241/cs, MATH247/cs, PMATH340/co pm, STAT241/cs}
@@ -105,7 +105,7 @@
     \DrawCourses[10 cm]{ENGL109/cs, PD10/cs}
 
     \node[term, below=of S19, alias=last] (F19) {Fall 19};
-    \DrawCourses{CS341/cs, PMATH351/pm, CO255/co, CO342/co, CO351/co override}
+    \DrawCourses{CS341/cs, PMATH351/pm, CO255/co, CO351/co override, CO342/co}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
     \DrawCourses[10 cm]{PHYS121/cs, PD6/cs}
@@ -142,11 +142,17 @@
             MATH245 <-[prereq] MATH146;
             MATH249 <-[prereq] {MATH145, MATH146};
 
-            CS240E <-[prereq] {CS245, CS246E, STAT230};
+            CS240E <-[prereq] {CS245, CS246E};
+            CS240E <-[prereq, dashed] STAT230;
             CS241 <-[prereq] CS246E;
             MATH247 <-[prereq] MATH148;
             PMATH340 <-[prereq] MATH145;
             STAT241 <-[prereq] STAT230;
+
+            CS341 <-[prereq, dashed] {CS240E, MATH249};
+            PMATH351 <-[prereq] MATH247;
+            CO255 <-[prereq] {MATH245, MATH247};
+            CO342 <-[prereq] MATH249;
         };
     \end{scope}
 \end{tikzpicture}
