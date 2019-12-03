@@ -147,12 +147,37 @@
             CS241 <-[prereq] CS246E;
             MATH247 <-[prereq] MATH148;
             PMATH340 <-[prereq] MATH145;
-            STAT241 <-[prereq] STAT230;
+            STAT241 <-[prereq, dashed] STAT230;
 
             CS341 <-[prereq, dashed] {CS240E, MATH249};
             PMATH351 <-[prereq] MATH247;
             CO255 <-[prereq] {MATH245, MATH247};
             CO342 <-[prereq] MATH249;
+
+            CS762 <-[prereq] CS341;
+            CS350 <-[prereq] {CS240E, CS246E, CS251, CS241};
+            PMATH347 <-[prereq] MATH245;
+            PMATH352 <-[prereq] MATH247;
+
+            CO456 <-[prereq] CO255;
+
+            CS485 <-[prereq] CS341;
+            CS485 <-[prereq, dashed] STAT230;
+            CS365 <-[prereq] {CS240E, MATH249};
+            CS365 <-[prereq, dashed] CS241;
+            PMATH348 <-[prereq] PMATH347;
+            CO481 <-[prereq] MATH245;
+
+            CO446 <-[prereq] CO342;
+
+            CS466 <-[prereq] CS341;
+            CS370 <-[prereq] {MATH146, MATH148, CS246E};
+            CO442 <-[prereq] CO342;
+            CO450 <-[prereq] CO351;
+
+            CS451 <-[prereq] CS350;
+            CS451 <-[prereq, dashed] CS341;
+            PHYS234 <-[prereq, dashed] PHYS122;
         };
     \end{scope}
 \end{tikzpicture}
