@@ -135,12 +135,12 @@
     \PlaceCourses{CO446/co/16.5cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CS466/cs co/3cm, CS370/cs/5cm, CO450/co/1cm, CO442/co/1cm}
+    \PlaceCourses{CS499T/cs/6cm, CO450/co/6cm, CO442/co/1cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS451/cs/9cm, CS499T/cs/4cm, PHYS234/cs/4cm}
+    \PlaceCourses{CS466/cs co/3cm, CS451/cs/3cm, CS370/cs/1cm, PHYS234/cs/8cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -174,21 +174,20 @@
             CO456 <-[prereq] CO255;
 
             CS485 <-[prereq] CS341;
-            CS485 <-[prereq, dashed] STAT230;
+            CS485 <-[prereq, dotted] STAT230;
             CS365 <-[prereq] CS240E;
-            CS365 <-[prereq, dashed] CS241;
-            CS365 <-[prereq, dashed] MATH249;
+            CS365 <-[prereq, dotted] {CS241, MATH249};
             PMATH348 <-[prereq] PMATH347;
             CO481 <-[prereq] MATH245;
 
             CO446 <-[prereq] CO342;
 
-            CS466 <-[prereq] CS341;
-            CS370 <-[prereq] {MATH146, MATH148, CS246E};
             CO442 <-[prereq] CO342;
             CO450 <-[prereq] CO351;
 
+            CS466 <-[prereq] CS341;
             CS451 <-[prereq] {CS350, CS341};
+            CS370 <-[prereq, dotted] {MATH146, MATH148, CS246E};
             PHYS234 <-[prereq] PHYS122;
         };
     \end{scope}
