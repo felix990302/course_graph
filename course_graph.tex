@@ -62,17 +62,26 @@
 
 \tikzstyle{co pm fill}=[path picture={\HalfFill{Crimson!40}{CottonCandy!40}}]
 \tikzstyle{cs pm fill}=[path picture={\HalfFill{Violet!20}{CottonCandy!40}}]
+\tikzstyle{cm pm fill}=[path picture={\HalfFill{Cerulean!20}{CottonCandy!40}}]
 \tikzstyle{cs co fill}=[path picture={\HalfFill{Violet!20}{Crimson!40}}]
+\tikzstyle{cs cm fill}=[path picture={\HalfFill{Violet!20}{Cerulean!20}}]
+\tikzstyle{cm co fill}=[path picture={\HalfFill{Cerulean!20}{Crimson!40}}]
 
 \tikzstyle{cs}=[basic,draw=Violet!80,fill=Violet!20]
+\tikzstyle{cm}=[basic,draw=Cerulean!80,fill=Cerulean!20]
 \tikzstyle{co}=[basic,draw=Crimson!80,fill=Crimson!40]
 \tikzstyle{pm}=[basic,draw=CottonCandy,fill=CottonCandy!40]
 \tikzstyle{co pm}=[basic,draw=Crimson!80,co pm fill]
 \tikzstyle{cs pm}=[basic,draw=Violet!80,cs pm fill]
+\tikzstyle{cm pm}=[basic,draw=Cerulean!80,cm pm fill]
 \tikzstyle{cs co}=[basic,draw=Violet!80,cs co fill]
+\tikzstyle{cs cm}=[basic,draw=Violet!80,cs cm fill]
+\tikzstyle{cm co}=[basic,draw=Cerulean!80,cm co fill]
 
 \tikzstyle{cs override}=[cs, loosely dashed]
+\tikzstyle{cs cm override}=[cs cm, loosely dashed]
 \tikzstyle{co override}=[co, loosely dashed]
+\tikzstyle{cm co override}=[cm co, loosely dashed]
 
 \tikzstyle{prereq}=[{Stealth[length=4.5mm]}-, thick]
 
@@ -105,42 +114,42 @@
     \PlaceCourses{CS146/cs/4cm, STAT230/cs/1cm, MATH146/cs/7cm, MATH148/cs/4.5cm, AFM102/cs/1cm, PD1/cs/1cm}
 
     \node[term, below=of W18, alias=last] (S18) {Spring 18};
-    \PutCourses{PD11/cs/below/of PD1, PHYS122/cs override/left/1cm of last}
+    \PutCourses{PD11/cs/below/of PD1, PHYS122/cs cm override/left/1cm of last}
 
     \node[term, below=of S18, alias=last] (F18) {Fall 18};
-    \PlaceCourses{CS245/cs/1cm, CS246E/cs/4cm, CS251/cs/1cm, MATH249/cs co/1cm, MATH245/cs/3.25cm}
+    \PlaceCourses{CS245/cs cm/1cm, CS246E/cs cm/4cm, CS251/cs/1cm, MATH249/cs co/1cm, MATH245/cs/3.25cm}
 
     \node[term, below=of F18, alias=last] (W19) {Winter 19};
-    \PlaceCourses{CS240E/cs/4cm, CS241/cs/4cm, PMATH340/co pm/5cm, MATH247/cs pm/3.5cm, STAT241/cs/4.75cm}
+    \PlaceCourses{CS240E/cs cm/4cm, CS241/cs cm/4.75cm, STAT241/cs/4cm, MATH247/cs pm/3.75cm, PMATH340/co pm/4.75cm}
 
     \node[term, below=of W19, alias=last] (S19) {Spring 19};
     \PutCourses{PD10/cs/below/4.5cm of PD11, ENGL109/cs/left/1cm of last}
 
     \node[term, below=of S19, alias=last] (F19) {Fall 19};
-    \PlaceCourses{CS341/cs/4cm, CO351/co override/7cm, CO342/co/1cm, CO255/co/1cm, PMATH351/pm/4.5cm}
+    \PlaceCourses{CS341/cs cm/4cm, CO351/cm co override/7cm, CO342/co/1cm, CO255/cm co/1cm, PMATH351/co pm/4.5cm}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
-    \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/1cm of last}
+    \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs cm/left/1cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/1cm, CS350/cs/8cm, PMATH347/co pm/10.25cm, PMATH352/pm/1cm}
+    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/15.25cm, PMATH352/pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
-    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/co/left/8.25cm of last}
+    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/cm co/left/8.25cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \PlaceCourses{CS485/cs/4cm, CS365/cs/1cm, PMATH348/co pm/14.25cm, CO481/co/1cm}
+    \PlaceCourses{CS365/cs/11.5cm, PMATH467/pm/10.5cm, CO481/co/1cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
     \PlaceCourses{CO446/co/21.5cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CS499T/cs/4cm, CO450/co/7cm, CO442/co/1cm}
+    \PlaceCourses{CS480/cs/4cm, CS371/cs cm/3.25cm, CO450/cm co/1cm, CO442/co/1cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS466/cs co/1cm, CS451/cs override/4cm, CS370/cs/1cm, PHYS234/cs/18cm}
+    \PlaceCourses{CS466/cs co/1cm, CS451/cs override/2.5cm, CS475/cs cm/1cm, PHYS234/cs cm/19.5cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -175,21 +184,23 @@
 
             CO456 <-[prereq] CO255;
 
-            CS485 <-[prereq] CS341;
-            CS485 <-[prereq, dashed] STAT230;
-            CS365 <-[prereq] CS240E;
-            CS365 <-[prereq, dashed] {CS241, MATH249};
-            PMATH348 <-[prereq] PMATH347;
+            CS365 <-[prereq] {CS241, MATH249};
+            CS365 <-[prereq, dashed] CS240E;
+            PMATH467 <-[prereq] PMATH347;
+            PMATH467 <-[prereq, dotted] PMATH351;
             CO481 <-[prereq] MATH245;
 
             CO446 <-[prereq] CO342;
 
+            CS480 <-[prereq] CS341;
+            CS480 <-[prereq, dashed] STAT241;
+            CS371 <-[prereq, dashed] {CS146, MATH245, MATH247};
             CO442 <-[prereq] CO342;
             CO450 <-[prereq] CO351;
 
             CS466 <-[prereq] CS341;
             CS451 <-[prereq] {CS350, CS341};
-            CS370 <-[prereq, dashed] {MATH146, MATH148, CS246E};
+            CS475 <-[prereq] CS371;
             PHYS234 <-[prereq] PHYS122;
         };
     \end{scope}
