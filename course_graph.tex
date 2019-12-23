@@ -111,13 +111,13 @@
     \PlaceCourses{CS145/cs/1cm, MATH145/cs/11cm, MATH147/cs/8cm, AFM101/cs/1cm, AFM131/cs/1cm}
 
     \node[term, below=of F17, alias=last] (W18) {Winter 18};
-    \PlaceCourses{CS146/cs/4cm, STAT230/cs/1cm, MATH146/cs/7cm, MATH148/cs/5.5cm, AFM102/cs/1cm, PD1/cs/1cm}
+    \PlaceCourses{STAT230/cs/1cm, CS146/cs/1cm, MATH146/cs/10cm, MATH148/cs/5.5cm, AFM102/cs/1cm, PD1/cs/1cm}
 
     \node[term, below=of W18, alias=last] (S18) {Spring 18};
     \PutCourses{PD11/cs/below/of PD1, PHYS122/cs cm override/left/1cm of last}
 
     \node[term, below=of S18, alias=last] (F18) {Fall 18};
-    \PlaceCourses{CS245/cs cm/1cm, CS246E/cs cm/4cm, CS251/cs/1cm, MATH249/cs co/1cm, MATH245/cs/4cm}
+    \PlaceCourses{CS245/cs cm/4cm, CS246E/cs cm/1cm, CS251/cs/1cm, MATH249/cs co/1cm, MATH245/cs/5cm}
 
     \node[term, below=of F18, alias=last] (W19) {Winter 19};
     \PlaceCourses{STAT241/cs/1cm, CS240E/cs cm/1cm, CS241/cs cm/4cm, MATH247/cs pm/11.5cm, PMATH340/co pm/4.5cm}
@@ -129,16 +129,16 @@
     \PlaceCourses{CS341/cs cm/3cm, CO351/cm co override/8.5cm, CO342/co/1cm, CO255/cm co/1cm, PMATH351/co pm/5cm}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
-    \PutCourses{PD6/cs/below/3cm of PD10, PHYS121/cs cm/left/1cm of last}
+    \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs cm/left/1cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/16cm, PMATH352/pm/1cm}
+    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH352/pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
-    \PutCourses{PD?/cs/below/3cm of PD6, CO456/cm co/left/8.5cm of last}
+    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/cm co/left/10.5cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \PlaceCourses{CS365/cs/11cm, PMATH467/pm/11.5cm, CO481/co/1cm}
+    \PlaceCourses{CS365/cs/11cm, CO444/co/9.5cm, CO481/co/1cm, PMATH467/pm/1cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
     \PlaceCourses{CO446/co/16cm}
@@ -164,11 +164,12 @@
             MATH249 <-[prereq] {MATH145, MATH146};
             MATH245 <-[prereq] MATH146;
 
-            CS240E <-[prereq] {CS245, CS246E, STAT230};
+            CS240E <-[prereq, dotted] STAT230;
+            CS240E <-[prereq] {CS245, CS246E};
             CS241 <-[prereq] CS246E;
             MATH247 <-[prereq] MATH148;
             PMATH340 <-[prereq, dotted] MATH145;
-            STAT241 <-[prereq, dotted] STAT230;
+            STAT241 <-[prereq] STAT230;
 
             CS341 <-[prereq] CS240E;
             CS341 <-[prereq, dotted] MATH249;
@@ -186,9 +187,11 @@
 
             CS365 <-[prereq] {CS241, MATH249};
             CS365 <-[prereq, dashed] CS240E;
+            CO444 <-[prereq, dashed] MATH249;
+            CO444 <-[prereq] PMATH347;
             PMATH467 <-[prereq] PMATH347;
             PMATH467 <-[prereq, dotted] PMATH351;
-            CO481 <-[prereq] MATH245;
+            CO481 <-[prereq, dashed] MATH245;
 
             CO446 <-[prereq] CO342;
 
