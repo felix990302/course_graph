@@ -104,7 +104,7 @@
 }
 
 \begin{tikzpicture}[remember picture, overlay, font=\small]
-    \node[term, xshift=3.5cm, yshift=-1.75cm, alias=last] (AP) at (current page.north west) {AP Credits};
+    \node[term, xshift=3.5cm, yshift=-2.25cm, alias=last] (AP) at (current page.north west) {AP Credits};
     \DrawCourses[1 cm]{ECON102/cs, ENGL1XX/cs, FR1XX/cs}
 
     \node[term, below=of AP, alias=last] (F17) {Fall 17};
@@ -126,7 +126,7 @@
     \PutCourses{PD10/cs/below/4.5cm of PD11, ENGL109/cs/left/1cm of last}
 
     \node[term, below=of S19, alias=last] (F19) {Fall 19};
-    \PlaceCourses{CS341/cs/3cm, CO351/co override/8.5cm, CO342/co/1cm, CO255/co/1cm, PMATH351/co pm/5cm}
+    \PlaceCourses{CS341/cs/3cm, CO342/co/8.5cm, CO351/co override/1cm, CO255/co/1cm, PMATH351/co pm/5cm}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
     \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/5cm of last}
@@ -135,21 +135,19 @@
     \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH352/pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
-    \PutCourses{PD?/cs/below/2.75cm of PD6, CO456/co/left/10.5cm of last}
+    \PutCourses{PD?/cs/below/2.75cm of PD6, CO450/co/left/12cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \PlaceCourses{CS365/cs/11cm, CO444/co/9.5cm, CS467/cs/1cm, PMATH467/pm/1cm}
+    \PlaceCourses{CS486/cs/4cm, CS365/cs/4.5cm, CO444/co/10cm, PMATH450/pm/4cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
-    \PlaceCourses{CO446/co/16cm}
+    \PlaceCourses{CO446/co/16.5cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CS486/cs/4cm, CS451/cs override/1cm, CO450/co/4cm, CO442/co/1cm}
+    \PlaceCourses{CS466/cs co/1cm, CO442/co/10.5cm, CO456/co/2cm, PMATH453/pm/9cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
-
-    \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS466/cs co/1cm, CS370/cs/6.5cm, PMATH450/pm/16cm, PHYS234/cs/1cm}
+    \PlaceCourses{CS370/cs/10cm, CS467/cs/9.5cm, PMATH467/pm/4cm, PHYS234/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -183,28 +181,27 @@
             PMATH347 <-[prereq] MATH245;
             PMATH352 <-[prereq, dashed] MATH247;
 
-            CO456 <-[prereq] CO255;
+            CO450 <-[prereq] CO351;
 
+            CS486 <-[prereq] CS341;
+            CS486 <-[prereq, dashed] STAT241;
             CS365 <-[prereq] {CS241, MATH249};
             CS365 <-[prereq, dashed] CS240E;
             CO444 <-[prereq, dashed] MATH249;
             CO444 <-[prereq] PMATH347;
-            PMATH467 <-[prereq, dotted] PMATH347;
-            PMATH467 <-[prereq, dashed] PMATH351;
-            CS467 <-[prereq, dashed] MATH245;
+            PMATH450 <-[prereq] PMATH351;
 
             CO446 <-[prereq] CO342;
 
-            CS486 <-[prereq] CS341;
-            CS486 <-[prereq, dashed] STAT241;
-            CS451 <-[prereq] {CS341, CS350};
-            CO442 <-[prereq] CO342;
-            CO450 <-[prereq] CO351;
-
             CS466 <-[prereq] CS341;
+            CO456 <-[prereq] CO255;
+            CO442 <-[prereq] CO342;
+            PMATH453 <-[prereq] PMATH450;
+
             CS370 <-[prereq, dashed] {CS246E, MATH146, MATH148};
+            CS467 <-[prereq] MATH245;
+            PMATH467 <-[prereq] {PMATH347, PMATH351};
             PHYS234 <-[prereq] PHYS122;
-            PMATH450 <-[prereq] PMATH351;
         };
     \end{scope}
 \end{tikzpicture}
