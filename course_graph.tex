@@ -132,7 +132,7 @@
     \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/4cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH450/pm/2cm}
+    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH352/pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
     \PutCourses{PD?/cs/below/2.75cm of PD6, CO450/co/left/15cm of last}
@@ -144,12 +144,12 @@
     \PlaceCourses{CO446/co/19cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CS370/cs/12cm, CO442/co/2.5cm, CO456/co/1cm, PMATH453/pm/5.5cm}
+    \PlaceCourses{CS451/cs override/8.5cm, CS370/cs/1cm, CO442/co/2.5cm, CO456/co/1cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS466/cs co/1cm, CS486/cs/1cm, PMATH352/pm/21.5cm, PHYS234/cs/1cm}
+    \PlaceCourses{CS466/cs co/1cm, CS486/cs/1cm, PMATH450/pm/21.5cm, PHYS234/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -181,7 +181,7 @@
             CS762 <-[prereq] CS341;
             CS350 <-[prereq] {CS240E, CS246E, CS251, CS241};
             PMATH347 <-[prereq] MATH245;
-            PMATH450 <-[prereq] PMATH351;
+            PMATH352 <-[prereq, dashed] MATH247;
 
             CO450 <-[prereq] CO351;
 
@@ -195,15 +195,15 @@
 
             CO446 <-[prereq] CO342;
 
+            CS451 <-[prereq] {CS341, CS350};
+            CS370 <-[prereq, dashed] {CS246E, MATH146, MATH148};
             CO442 <-[prereq] CO342;
             CO456 <-[prereq] CO255;
-            PMATH453 <-[prereq] PMATH450;
 
             CS466 <-[prereq] CS341;
             CS486 <-[prereq] CS341;
             CS486 <-[prereq, dashed] STAT241;
-            CS370 <-[prereq, dashed] {CS246E, MATH146, MATH148};
-            PMATH352 <-[prereq, dashed] MATH247;
+            PMATH450 <-[prereq] PMATH351;
             PHYS234 <-[prereq] PHYS122;
         };
     \end{scope}
