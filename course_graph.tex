@@ -144,12 +144,12 @@
     \PlaceCourses{CO446/co/19cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CS451/cs override/8.5cm, CS370/cs/1cm, CO442/co/2.5cm, CO456/co/1cm}
+    \PlaceCourses{CS466/cs co/1cm, CS370/cs/8.5cm, CO442/co/2.5cm, CO456/co/1cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS466/cs co/1cm, CS486/cs/1cm, PMATH450/pm/21.5cm, PHYS234/cs/1cm}
+    \PlaceCourses{CS486/cs/4.5cm, CS451/cs override/1cm, PMATH450/pm/18cm, PHYS234/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -195,12 +195,12 @@
 
             CO446 <-[prereq] CO342;
 
-            CS451 <-[prereq] {CS341, CS350};
+            CS466 <-[prereq] CS341;
             CS370 <-[prereq, dashed] {CS246E, MATH146, MATH148};
             CO442 <-[prereq] CO342;
             CO456 <-[prereq] CO255;
 
-            CS466 <-[prereq] CS341;
+            CS451 <-[prereq] {CS341, CS350};
             CS486 <-[prereq] CS341;
             CS486 <-[prereq, dashed] STAT241;
             PMATH450 <-[prereq] PMATH351;
