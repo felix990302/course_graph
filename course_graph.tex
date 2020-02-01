@@ -126,13 +126,13 @@
     \PutCourses{PD10/cs/below/4.5cm of PD11, ENGL109/cs/left/1cm of last}
 
     \node[term, below=of S19, alias=last] (F19) {Fall 19};
-    \PlaceCourses{CS341/cs/3cm, CO351/co override/8.5cm, CO342/co/1cm, CO255/co/1cm, PMATH351/co pm/5cm}
+    \PlaceCourses{CS341/cs/3.5cm, CO351/co override/8cm, CO342/co/1cm, CO255/co/1cm, PMATH351/co pm/5cm}
 
     \node[term, below=of F19, alias=last] (W20) {Winter 20};
     \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/4cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH352/pm/1cm}
+    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH450/pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
     \PutCourses{PD?/cs/below/2.75cm of PD6, CO450/co/left/15cm of last}
@@ -141,15 +141,15 @@
     \PlaceCourses{CS365/cs/10cm, CO444/co/10.5cm, CS467/cs/1cm, PMATH467/pm/1cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
-    \PlaceCourses{CO446/co/19cm}
+    \PlaceCourses{CO446/co/18cm}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CS466/cs co/1cm, CS370/cs/8.5cm, CO442/co/2.5cm, CO456/co/1cm}
+    \PlaceCourses{CS370/cs/12cm, CO442/co/1.5cm, CO456/co/1cm, PMATH453/pm/7.5cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS486/cs/4.5cm, CS451/cs override/1cm, PMATH450/pm/18cm, PHYS234/cs/1cm}
+    \PlaceCourses{CS466/cs co/1cm, CS486/cs/1cm, PMATH352/pm/21.5cm, PHYS234/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -181,7 +181,7 @@
             CS762 <-[prereq] CS341;
             CS350 <-[prereq] {CS240E, CS246E, CS251, CS241};
             PMATH347 <-[prereq] MATH245;
-            PMATH352 <-[prereq, dashed] MATH247;
+            PMATH450 <-[prereq] PMATH351;
 
             CO450 <-[prereq] CO351;
 
@@ -190,20 +190,20 @@
             CO444 <-[prereq, dashed] MATH249;
             CO444 <-[prereq] PMATH347;
             PMATH467 <-[prereq, dotted] PMATH347;
-            PMATH467 <-[prereq, dashed] PMATH351;
+            PMATH467 <-[prereq] PMATH351;
             CS467 <-[prereq, dashed] MATH245;
 
             CO446 <-[prereq] CO342;
 
-            CS466 <-[prereq] CS341;
             CS370 <-[prereq, dashed] {CS246E, MATH146, MATH148};
             CO442 <-[prereq] CO342;
             CO456 <-[prereq] CO255;
+            PMATH453 <-[prereq] PMATH450;
 
-            CS451 <-[prereq] {CS341, CS350};
+            CS466 <-[prereq] CS341;
             CS486 <-[prereq] CS341;
             CS486 <-[prereq, dashed] STAT241;
-            PMATH450 <-[prereq] PMATH351;
+            PMATH352 <-[prereq, dashed] MATH247;
             PHYS234 <-[prereq] PHYS122;
         };
     \end{scope}
