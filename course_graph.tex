@@ -132,13 +132,13 @@
     \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/4cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/1cm, CS350/cs/3cm, PMATH347/co pm/14.5cm, PMATH450/pm/1cm}
+    \PlaceCourses{CS762/cs/1cm, CS466/cs co/1cm, CS350/cs/1cm, PMATH347/co pm/13cm, PMATH450/pm/1cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
     \PutCourses{PD?/cs/below/2.75cm of PD6, CO450/co/left/15cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \PlaceCourses{CS365/cs/10cm, CO444/co/10.5cm, CS467/cs/1cm, PMATH467/pm/1cm}
+    \PlaceCourses{CS365/cs/9cm, CO444/co/11.5cm, CS467/cs/1cm, PMATH343/pm/1cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
     \PlaceCourses{CO446/co/18cm}
@@ -149,7 +149,7 @@
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS466/cs co/1cm, CS486/cs/1cm, PMATH352/pm/21.5cm, PHYS234/cs/1cm}
+    \PlaceCourses{CS486/cs/2cm, PMATH352/pm/24cm, PHYS234/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -179,6 +179,7 @@
             CO342 <-[prereq] MATH249;
 
             CS762 <-[prereq] CS341;
+            CS466 <-[prereq] CS341;
             CS350 <-[prereq] {CS240E, CS246E, CS251, CS241};
             PMATH347 <-[prereq] MATH245;
             PMATH450 <-[prereq] PMATH351;
@@ -189,9 +190,9 @@
             CS365 <-[prereq, dashed] CS240E;
             CO444 <-[prereq, dashed] MATH249;
             CO444 <-[prereq] PMATH347;
-            PMATH467 <-[prereq, dotted] PMATH347;
-            PMATH467 <-[prereq] PMATH351;
             CS467 <-[prereq, dashed] MATH245;
+            PMATH343 <-[prereq, dotted] MATH245;
+            PMATH343 <-[prereq, dashed] MATH247;
 
             CO446 <-[prereq] CO342;
 
@@ -200,7 +201,6 @@
             CO456 <-[prereq] CO255;
             PMATH453 <-[prereq] PMATH450;
 
-            CS466 <-[prereq] CS341;
             CS486 <-[prereq] CS341;
             CS486 <-[prereq, dashed] STAT241;
             PMATH352 <-[prereq, dashed] MATH247;
