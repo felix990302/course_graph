@@ -132,13 +132,13 @@
     \PutCourses{PD6/cs/below/2.75cm of PD10, PHYS121/cs/left/4cm of last}
 
     \node[term, below=of W20, alias=last] (S20) {Spring 20};
-    \PlaceCourses{CS762/cs/1cm, CS466/cs co/1cm, CS350/cs/1cm, PMATH347/co pm/13cm, PMATH450/pm/1cm}
+    \PlaceCourses{CS762/cs/1cm, CS466/cs co/1cm, CS350/cs/1cm, PMATH347/co pm/13cm, PMATH450/pm/2.5cm}
 
     \node[term, below=of S20, alias=last] (F20) {Fall 20};
     \PutCourses{PD?/cs/below/2.75cm of PD6, CO450/co/left/15cm of last}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \PlaceCourses{CS365/cs/9cm, CO444/co/11.5cm, CS467/cs/1cm, PMATH343/pm/1cm}
+    \PlaceCourses{CS365/cs/9cm, CO444/co/11.5cm, CS467/cs/1cm, PMATH343/pm/3cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
     \PlaceCourses{CO446/co/18cm}
@@ -147,9 +147,10 @@
     \PlaceCourses{CS370/cs/12cm, CO442/co/1.5cm, CO456/co/1cm, PMATH453/pm/7.5cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
+    \PlaceCourses{ENGL210F/cs/26cm}
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
-    \PlaceCourses{CS486/cs/2cm, PMATH352/pm/24cm, PHYS234/cs/1cm}
+    \PlaceCourses{CS486/cs/2cm, CO471/co/17cm, PMATH352/pm/4.5cm, PHYS234/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -203,6 +204,9 @@
 
             CS486 <-[prereq] CS341;
             CS486 <-[prereq, dashed] STAT241;
+            CO471 <-[prereq, dashed] MATH249;
+            CO471 <-[prereq] PMATH351;
+            CO471 <-[prereq] CO255;
             PMATH352 <-[prereq, dashed] MATH247;
             PHYS234 <-[prereq] PHYS122;
         };
