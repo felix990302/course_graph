@@ -138,16 +138,16 @@
     \PlaceCourses{CO450/co/12cm}
 
     \node[term, below=of F20, alias=last] (W21) {Winter 21};
-    \PlaceCourses{CS365/cs/9cm, CO444/co/11.5cm, CS467/cs/1cm, PMATH343/pm/3cm}
+    \PlaceCourses{CS365/cs/9cm, CO754/co/11.5cm, CS467/cs/1cm, CO463/co/3cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
-    \PutCourses{PD?/cs/below/1cm of PMATH343, CO471/co/left/10cm of last}
+    \PutCourses{PD?/cs/below/1cm of CO463, CO471/co/left/10cm of last}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
     \PlaceCourses{CO442/co/16cm, PMATH453/pm/11.5cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
-    \PlaceCourses{CS480/cs/4cm, CS370/cs/5.5cm, ENGL210F/cs/10.5cm, PMATH352/pm/1cm, PHYS233/cs/1cm}
+    \PlaceCourses{CS480/cs/4cm, CS370/cs/5.5cm, ENGL210F/cs/10.5cm, CO444/co/1cm, PHYS233/cs/1cm}
 
     \node[term, below=of W22, alias=last] (S22) {Spring 22};
 
@@ -188,10 +188,9 @@
 
             CS365 <-[prereq] {CS241, MATH249};
             CS365 <-[prereq, dashed] CS240E;
-            CO444 <-[prereq] PMATH347;
-            CO444 <-[prereq, dashed] MATH249;
-            PMATH343 <-[prereq, dotted] MATH245;
-            PMATH343 <-[prereq, dashed] MATH247;
+            CO754 <-[prereq] CO255;
+            CS467 <-[prereq] MATH245;
+            CO463 <-[prereq, dashed] {CO255, PMATH351};
 
             CO471 <-[prereq, dotted] {MATH249, PMATH351};
             CO471 <-[prereq] CO255;
@@ -202,7 +201,8 @@
             CS480 <-[prereq] CS341;
             CS480 <-[prereq, dashed] STAT241;
             CS370 <-[prereq, dashed] {CS246E, MATH146, MATH148};
-            PMATH352 <-[prereq, dashed] MATH247;
+            CO444 <-[prereq] PMATH347;
+            CO444 <-[prereq, dashed] MATH249;
             PHYS233 <-[prereq] PHYS122;
         };
     \end{scope}
