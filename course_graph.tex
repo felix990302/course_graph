@@ -104,7 +104,7 @@
 }
 
 \begin{tikzpicture}[remember picture, overlay, font=\small]
-    \node[term, xshift=3.5cm, yshift=-1.75cm, alias=last] (AP) at (current page.north west) {AP Credits};
+  \node[term, xshift=3.5cm, yshift=-2.25cm, alias=last] (AP) at (current page.north west) {AP Credits};
     \DrawCourses[1 cm]{ECON102/cs, ENGL1XX/cs, FR1XX/cs}
 
     \node[term, below=of AP, alias=last] (F17) {Fall 17};
@@ -141,15 +141,13 @@
     \PlaceCourses{CS365/cs/9cm, CO444/co/11.5cm, CS467/cs/1cm, CO463/co/3cm}
 
     \node[term, below=of W21, alias=last] (S21) {Spring 21};
-    \PutCourses{PD?/cs/below/1cm of CO463, CO471/co/left/10cm of last}
+    \PutCourses{PD13/cs/below/1cm of CO463, CO471/co/left/10cm of last}
 
     \node[term, below=of S21, alias=last] (F21) {Fall 21};
-    \PlaceCourses{CO442/co/16cm, PMATH453/pm/11.5cm}
+    \PlaceCourses{PMATH453/pm/28.5cm}
 
     \node[term, below=of F21, alias=last] (W22) {Winter 22};
-    \PlaceCourses{CS480/cs/4cm, CS370/cs/5.5cm, ENGL210F/cs/10.5cm, CO???/co/1cm, PHYS233/cs/1cm}
-
-    \node[term, below=of W22, alias=last] (S22) {Spring 22};
+    \PlaceCourses{CS480/cs/4cm, CS370/cs/5.5cm, ENGL210F/cs/14cm, PHYS233/cs/1cm}
 
     \begin{scope}[on background layer]
         \graph[use existing nodes, simple] {
@@ -197,7 +195,6 @@
             CO471 <-[prereq, dashed] PMATH351;
             CO471 <-[prereq] CO255;
 
-            CO442 <-[prereq] CO342;
             PMATH453 <-[prereq] PMATH450;
 
             CS480 <-[prereq] CS341;
